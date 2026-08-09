@@ -1,6 +1,7 @@
 # Portfolio
 Interactive developer portfolio built with HTML, Tailwind CSS, and vanilla JavaScript — featuring a blueprint-inspired design, persisted dark/light theming, and dynamic project filtering.
 Nandan K — Developer Portfolio
+live demo url:portfolio-nandan-krishnaswamy.vercel.app
 
 A personal developer portfolio designed around a blueprint/schematic visual theme — grid-paper backgrounds, registration-mark corner brackets, dimension-line dividers, and spec-sheet style cards. Built with semantic HTML5, Tailwind CSS, and vanilla JavaScript, with no framework and no build step.
 
