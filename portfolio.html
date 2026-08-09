@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nandan K — Frontend Engineer portfolio</title>
+    <meta
+      name="description"
+      content="Nandan K — Frontend Engineer portfolio. HTML, CSS, Tailwind, JavaScript, React."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --bg: #0b1d33;
+        --panel: #0f2440;
+        --panel-2: #0c1f38;
+        --ink: #eaf2fa;
+        --muted: #8ca3bc;
+        --accent: #5eead4;
+        --accent-warm: #f5b24f;
+        --border: rgba(234, 242, 250, 0.12);
+        --grid-line: rgba(94, 234, 212, 0.07);
+      }
+      html[data-theme="light"] {
+        --bg: #f4efe2;
+        --panel: #ffffff;
+        --panel-2: #fbf7ec;
+        --ink: #132844;
+        --muted: #5b6b80;
+        --accent: #0e8074;
+        --accent-warm: #b4790c;
+        --border: rgba(19, 40, 68, 0.14);
+        --grid-line: rgba(19, 40, 68, 0.05);
+      }
+
+      * {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
+      }
+      .font-display {
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .grid-paper {
+        background-image:
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+
+      /* Registration corner brackets — signature element */
+      .reg-corners {
+        position: relative;
+      }
+      .reg-corners::before,
+      .reg-corners::after,
+      .reg-corners .rc-tl,
+      .reg-corners .rc-br {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-color: var(--accent);
+      }
+      .reg-corners::before {
+        top: -1px;
+        left: -1px;
+        border-top: 2px solid var(--accent);
+        border-left: 2px solid var(--accent);
+      }
+      .reg-corners::after {
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 2px solid var(--accent);
+        border-right: 2px solid var(--accent);
+      }
+      .reg-corners .rc-tl {
+        top: -1px;
+        right: -1px;
+        border-top: 2px solid var(--accent);
+        border-right: 2px solid var(--accent);
+      }
+      .reg-corners .rc-br {
+        bottom: -1px;
+        left: -1px;
+        border-bottom: 2px solid var(--accent);
+        border-left: 2px solid var(--accent);
+      }
+
+      /* Dimension-line section divider */
+      .dim-line {
+        position: relative;
+        height: 1px;
+        background: var(--border);
+      }
+      .dim-line::before,
+      .dim-line::after {
+        content: "";
+        position: absolute;
+        top: -4px;
+        width: 1px;
+        height: 9px;
+        background: var(--border);
+      }
+      .dim-line::before {
+        left: 0;
+      }
+      .dim-line::after {
+        right: 0;
+      }
+
+      .theme-icon {
+        display: none;
+      }
+      html[data-theme="dark"] .icon-sun {
+        display: block;
+      }
+      html[data-theme="light"] .icon-moon {
+        display: block;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      a,
+      button {
+        -webkit-tap-highlight-color: transparent;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="antialiased">
+    <!-- NAV -->
+    <header
+      class="fixed top-0 inset-x-0 z-50 border-b"
+      style="
+        border-color: var(--border);
+        background: color-mix(in srgb, var(--bg) 85%, transparent);
+        backdrop-filter: blur(8px);
+      "
+    >
+      <div
+        class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between"
+      >
+        <a
+          href="#top"
+          class="font-mono text-sm border px-2.5 py-1.5 rounded"
+          style="border-color: var(--border); color: var(--ink)"
+          >NK<span style="color: var(--accent)">/</span>01</a
+        >
+
+        <nav
+          class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest"
+          style="color: var(--muted)"
+        >
+          <a href="#about" class="hover:!text-[var(--ink)] transition-colors"
+            >About</a
+          >
+          <a href="#skills" class="hover:!text-[var(--ink)] transition-colors"
+            >Skills</a
+          >
+          <a href="#projects" class="hover:!text-[var(--ink)] transition-colors"
+            >Projects</a
+          >
+          <a href="#contact" class="hover:!text-[var(--ink)] transition-colors"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="#contact"
+            class="hidden sm:inline-block font-mono text-xs uppercase tracking-widest px-3 py-2 rounded border transition-colors"
+            style="border-color: var(--accent); color: var(--accent)"
+            >Let's talk</a
+          >
+          <button
+            id="theme-toggle"
+            aria-label="Toggle color theme"
+            class="w-9 h-9 grid place-items-center rounded border"
+            style="border-color: var(--border)"
+          >
+            <svg
+              class="theme-icon icon-sun"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--ink)"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              />
+            </svg>
+            <svg
+              class="theme-icon icon-moon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--ink)"
+              stroke-width="2"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      id="top"
+      class="grid-paper pt-32 pb-24 px-5 sm:px-8 border-b"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="reg-corners border rounded-2xl p-8 sm:p-14"
+          style="
+            border-color: var(--border);
+            background: color-mix(in srgb, var(--panel) 70%, transparent);
+          "
+        >
+          <span class="rc-tl"></span><span class="rc-br"></span>
+
+          <p
+            class="font-mono text-xs uppercase tracking-[0.25em] mb-6"
+            style="color: var(--accent)"
+          >
+            Fig. 01 — Developer Profile
+          </p>
+
+          <h1
+            class="font-display font-semibold leading-[1.05] text-4xl sm:text-6xl mb-6"
+          >
+            Nandan K —<br class="hidden sm:block" />
+            <span style="color: var(--muted)">building interfaces</span
+            ><br class="hidden sm:block" />
+            that hold up under real data.
+          </h1>
+
+          <p
+            class="max-w-xl text-base sm:text-lg mb-8"
+            style="color: var(--muted)"
+          >
+            Frontend engineer specializing in responsive, interactive UI — HTML,
+            CSS, Tailwind, JavaScript and React — with working backend
+            integration knowledge for effective end-to-end delivery.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#projects"
+              class="font-mono text-xs uppercase tracking-widest px-5 py-3 rounded"
+              style="background: var(--accent); color: var(--bg)"
+              >View Projects</a
+            >
+            <a
+              href="#contact"
+              class="font-mono text-xs uppercase tracking-widest px-5 py-3 rounded border"
+              style="border-color: var(--border); color: var(--ink)"
+              >Get in Touch</a
+            >
+          </div>
+
+          <div
+            class="mt-10 pt-6 border-t flex flex-wrap gap-x-8 gap-y-2 font-mono text-xs"
+            style="border-color: var(--border); color: var(--muted)"
+          >
+            <span>LOC — Bengaluru, IN</span>
+            <span>FOCUS — Frontend / React</span>
+            <span>STATUS — Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section
+      id="about"
+      class="px-5 sm:px-8 py-24 border-b"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-12">
+        <div class="md:col-span-3 reveal">
+          <p
+            class="font-mono text-xs uppercase tracking-[0.25em] mb-4"
+            style="color: var(--accent)"
+          >
+            Sec. 01 — About
+          </p>
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl mb-6">
+            Fundamentals first, then the framework.
+          </h2>
+          <p class="text-base sm:text-lg mb-4" style="color: var(--muted)">
+            I'm a Computer Science Engineering student who treats markup and
+            styling as seriously as the frameworks built on top of them. Before
+            reaching for a library, I ask what plain HTML, CSS and JavaScript
+            can already do — which is why every interface I ship is fast,
+            accessible, and doesn't fall apart outside the happy path.
+          </p>
+          <p class="text-base sm:text-lg" style="color: var(--muted)">
+            Recent work spans real-time data dashboards, AI-powered tools, and
+            ML-backed decision systems — always with the same question at the
+            center: what does the person using this actually need to see, and
+            when?
+          </p>
+        </div>
+
+        <div class="md:col-span-2 reveal">
+          <div
+            class="reg-corners border rounded-xl p-6"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <span class="rc-tl"></span><span class="rc-br"></span>
+            <p
+              class="font-mono text-xs uppercase tracking-widest mb-5"
+              style="color: var(--accent)"
+            >
+              Spec Sheet
+            </p>
+            <dl class="space-y-4 font-mono text-sm">
+              <div class="flex justify-between gap-4">
+                <dt style="color: var(--muted)">Role</dt>
+                <dd class="text-right">Frontend Engineer</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt style="color: var(--muted)">Education</dt>
+                <dd class="text-right">B.E. CSE, DBIT</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt style="color: var(--muted)">CGPA</dt>
+                <dd class="text-right">8.25</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt style="color: var(--muted)">Based in</dt>
+                <dd class="text-right">Bengaluru, IN</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt style="color: var(--muted)">Available</dt>
+                <dd class="text-right" style="color: var(--accent)">
+                  Internships / Junior roles
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section
+      id="skills"
+      class="px-5 sm:px-8 py-24 border-b"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <p
+          class="font-mono text-xs uppercase tracking-[0.25em] mb-4 reveal"
+          style="color: var(--accent)"
+        >
+          Sec. 02 — Toolset
+        </p>
+        <h2
+          class="font-display font-semibold text-3xl sm:text-4xl mb-12 reveal"
+        >
+          What I build with.
+        </h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div
+            class="reveal border rounded-xl p-6"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <p
+              class="font-mono text-xs uppercase tracking-widest mb-4"
+              style="color: var(--accent)"
+            >
+              // Frontend
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >HTML5</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >CSS3</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >JavaScript</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >React</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Tailwind CSS</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Bootstrap</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="reveal border rounded-xl p-6"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <p
+              class="font-mono text-xs uppercase tracking-widest mb-4"
+              style="color: var(--accent)"
+            >
+              // UI Concepts
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Responsive Design</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Component Architecture</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >State Management</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >REST API Integration</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="reveal border rounded-xl p-6"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <p
+              class="font-mono text-xs uppercase tracking-widest mb-4"
+              style="color: var(--accent)"
+            >
+              // Tooling
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Git / GitHub</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >VS Code</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Vite</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >JWT Auth</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="reveal border rounded-xl p-6"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <p
+              class="font-mono text-xs uppercase tracking-widest mb-4"
+              style="color: var(--accent)"
+            >
+              // Backend (supporting)
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Node.js</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Express</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >Flask</span
+              >
+              <span
+                class="font-mono text-xs px-2.5 py-1 rounded border"
+                style="border-color: var(--border)"
+                >MongoDB</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section
+      id="projects"
+      class="px-5 sm:px-8 py-24 border-b"
+      style="border-color: var(--border)"
+    >
+      <div class="max-w-6xl mx-auto">
+        <p
+          class="font-mono text-xs uppercase tracking-[0.25em] mb-4 reveal"
+          style="color: var(--accent)"
+        >
+          Sec. 03 — Selected Work
+        </p>
+        <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+          <h2 class="font-display font-semibold text-3xl sm:text-4xl reveal">
+            Projects.
+          </h2>
+
+          <div id="filters" class="flex flex-wrap gap-2 reveal">
+            <button
+              data-filter="all"
+              class="filter-btn font-mono text-xs uppercase tracking-widest px-3 py-2 rounded border"
+              style="
+                border-color: var(--accent);
+                background: var(--accent);
+                color: var(--bg);
+              "
+            >
+              All
+            </button>
+            <button
+              data-filter="data"
+              class="filter-btn font-mono text-xs uppercase tracking-widest px-3 py-2 rounded border"
+              style="border-color: var(--border); color: var(--muted)"
+            >
+              Data Viz
+            </button>
+            <button
+              data-filter="ai"
+              class="filter-btn font-mono text-xs uppercase tracking-widest px-3 py-2 rounded border"
+              style="border-color: var(--border); color: var(--muted)"
+            >
+              AI / ML
+            </button>
+            <button
+              data-filter="ui"
+              class="filter-btn font-mono text-xs uppercase tracking-widest px-3 py-2 rounded border"
+              style="border-color: var(--border); color: var(--muted)"
+            >
+              UI / UX
+            </button>
+          </div>
+        </div>
+
+        <div id="project-grid" class="grid md:grid-cols-3 gap-6">
+          <article
+            class="project-card reveal reg-corners border rounded-xl p-6 flex flex-col"
+            data-tags="data ui"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <span class="rc-tl"></span><span class="rc-br"></span>
+            <p class="font-mono text-xs mb-3" style="color: var(--accent)">
+              PROJECT_01
+            </p>
+            <h3 class="font-display font-semibold text-xl mb-3">
+              Cryptocurrency Price Analysis Web App
+            </h3>
+            <p class="text-sm mb-5 flex-1" style="color: var(--muted)">
+              Responsive analytics dashboard consuming the CoinMarketCap and
+              Yahoo Finance APIs — market-cap comparisons, dominance charts, and
+              CSV export.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >JavaScript</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >REST API</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >Data Viz</span
+              >
+            </div>
+            <a
+              href="#"
+              class="font-mono text-xs uppercase tracking-widest"
+              style="color: var(--accent)"
+              >View case study →</a
+            >
+          </article>
+
+          <article
+            class="project-card reveal reg-corners border rounded-xl p-6 flex flex-col"
+            data-tags="ai ui"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <span class="rc-tl"></span><span class="rc-br"></span>
+            <p class="font-mono text-xs mb-3" style="color: var(--accent)">
+              PROJECT_02
+            </p>
+            <h3 class="font-display font-semibold text-xl mb-3">
+              Speech-to-Image Generation
+            </h3>
+            <p class="text-sm mb-5 flex-1" style="color: var(--muted)">
+              Real-time Streamlit interface that captures voice input, shows
+              live transcription, and instantly previews AI-generated images.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >Python</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >Streamlit</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >AI/ML</span
+              >
+            </div>
+            <a
+              href="#"
+              class="font-mono text-xs uppercase tracking-widest"
+              style="color: var(--accent)"
+              >View case study →</a
+            >
+          </article>
+
+          <article
+            class="project-card reveal reg-corners border rounded-xl p-6 flex flex-col"
+            data-tags="ai data"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <span class="rc-tl"></span><span class="rc-br"></span>
+            <p class="font-mono text-xs mb-3" style="color: var(--accent)">
+              PROJECT_03
+            </p>
+            <h3 class="font-display font-semibold text-xl mb-3">
+              Crop Recommendation & Fertilizer Prediction
+            </h3>
+            <p class="text-sm mb-5 flex-1" style="color: var(--muted)">
+              ML-driven decision-support tool with a form-based Streamlit
+              frontend integrated with a Flask backend via REST.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >Flask</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >ML</span
+              >
+              <span
+                class="font-mono text-[11px] px-2 py-1 rounded border"
+                style="border-color: var(--border); color: var(--muted)"
+                >Streamlit</span
+              >
+            </div>
+            <a
+              href="#"
+              class="font-mono text-xs uppercase tracking-widest"
+              style="color: var(--accent)"
+              >View case study →</a
+            >
+          </article>
+        </div>
+
+        <p
+          id="empty-state"
+          class="hidden font-mono text-sm mt-8"
+          style="color: var(--muted)"
+        >
+          No projects match this filter yet.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="px-5 sm:px-8 py-24">
+      <div class="max-w-6xl mx-auto">
+        <p
+          class="font-mono text-xs uppercase tracking-[0.25em] mb-4 reveal"
+          style="color: var(--accent)"
+        >
+          Sec. 04 — Contact
+        </p>
+        <h2
+          class="font-display font-semibold text-3xl sm:text-4xl mb-12 reveal"
+        >
+          Let's build something.
+        </h2>
+
+        <div class="grid md:grid-cols-5 gap-10">
+          <div class="md:col-span-2 reveal">
+            <p class="mb-6" style="color: var(--muted)">
+              Open to internships and junior frontend roles. Fastest way to
+              reach me is email — I usually reply within a day.
+            </p>
+            <dl class="space-y-3 font-mono text-sm">
+              <div>
+                <dt class="inline" style="color: var(--muted)">Email —</dt>
+                <dd class="inline">
+                  <a
+                    href="mailto:nandankrish20@gmail.com"
+                    class="underline decoration-dotted"
+                    >nandankrish20@gmail.com</a
+                  >
+                </dd>
+              </div>
+              <div>
+                <dt class="inline" style="color: var(--muted)">Phone —</dt>
+                <dd class="inline">+91 93534 64104</dd>
+              </div>
+              <div>
+                <dt class="inline" style="color: var(--muted)">LinkedIn —</dt>
+                <dd class="inline">
+                  <a
+                    href="https://linkedin.com/in/nandan-krish"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline decoration-dotted"
+                    >nandan-krish</a
+                  >
+                </dd>
+              </div>
+              <div>
+                <dt class="inline" style="color: var(--muted)">GitHub —</dt>
+                <dd class="inline">
+                  <a
+                    href="https://github.com/nandank20-krishnaswamy"
+                    target="_blank"
+                    rel="noopener"
+                    class="underline decoration-dotted"
+                    >nandank20-krishnaswamy</a
+                  >
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <form
+            id="contact-form"
+            novalidate
+            class="md:col-span-3 reveal reg-corners border rounded-xl p-6 sm:p-8"
+            style="border-color: var(--border); background: var(--panel)"
+          >
+            <span class="rc-tl"></span><span class="rc-br"></span>
+
+            <div class="mb-5">
+              <label
+                for="name"
+                class="font-mono text-xs uppercase tracking-widest block mb-2"
+                style="color: var(--muted)"
+                >Name</label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                class="w-full rounded-lg border px-4 py-3 bg-transparent"
+                style="border-color: var(--border); color: var(--ink)"
+              />
+              <p
+                class="field-error hidden font-mono text-xs mt-2"
+                style="color: var(--accent-warm)"
+              ></p>
+            </div>
+
+            <div class="mb-5">
+              <label
+                for="email"
+                class="font-mono text-xs uppercase tracking-widest block mb-2"
+                style="color: var(--muted)"
+                >Email</label
+              >
+              <input
+                id="email"
+                name="email"
+                type="email"
+                class="w-full rounded-lg border px-4 py-3 bg-transparent"
+                style="border-color: var(--border); color: var(--ink)"
+              />
+              <p
+                class="field-error hidden font-mono text-xs mt-2"
+                style="color: var(--accent-warm)"
+              ></p>
+            </div>
+
+            <div class="mb-6">
+              <label
+                for="message"
+                class="font-mono text-xs uppercase tracking-widest block mb-2"
+                style="color: var(--muted)"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full rounded-lg border px-4 py-3 bg-transparent resize-none"
+                style="border-color: var(--border); color: var(--ink)"
+              ></textarea>
+              <p
+                class="field-error hidden font-mono text-xs mt-2"
+                style="color: var(--accent-warm)"
+              ></p>
+            </div>
+
+            <button
+              type="submit"
+              class="font-mono text-xs uppercase tracking-widest px-5 py-3 rounded"
+              style="background: var(--accent); color: var(--bg)"
+            >
+              Send Message
+            </button>
+            <p
+              id="form-success"
+              class="hidden font-mono text-xs mt-4"
+              style="color: var(--accent)"
+            >
+              Message captured. In a live deployment this would send via a
+              service like Formspree or EmailJS.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="px-5 sm:px-8 py-8 border-t"
+      style="border-color: var(--border)"
+    >
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest"
+        style="color: var(--muted)"
+      >
+        <span>Sheet 01/01 — Nandan K — Frontend Engineer</span>
+        <span>Rev. 2026 — Built with HTML, Tailwind &amp; JS</span>
+      </div>
+    </footer>
+
+    <script>
+      // ---- Theme toggle (persisted) ----
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      function setTheme(mode) {
+        root.setAttribute("data-theme", mode);
+        localStorage.setItem("theme", mode);
+      }
+      setTheme(localStorage.getItem("theme") || "dark");
+      themeToggle.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+
+      // ---- Project filter ----
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".project-card");
+      const emptyState = document.getElementById("empty-state");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => {
+            b.style.background = "transparent";
+            b.style.color = "var(--muted)";
+            b.style.borderColor = "var(--border)";
+          });
+          btn.style.background = "var(--accent)";
+          btn.style.color = "var(--bg)";
+          btn.style.borderColor = "var(--accent)";
+
+          const filter = btn.dataset.filter;
+          let visibleCount = 0;
+          cards.forEach((card) => {
+            const tags = card.dataset.tags.split(" ");
+            const show = filter === "all" || tags.includes(filter);
+            card.style.display = show ? "" : "none";
+            if (show) visibleCount++;
+          });
+          emptyState.classList.toggle("hidden", visibleCount !== 0);
+        });
+      });
+
+      // ---- Scroll reveal ----
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => observer.observe(el));
+      } else {
+        document
+          .querySelectorAll(".reveal")
+          .forEach((el) => el.classList.add("is-visible"));
+      }
+
+      // ---- Contact form validation ----
+      const form = document.getElementById("contact-form");
+      const successMsg = document.getElementById("form-success");
+
+      function showError(input, message) {
+        const errorEl = input.parentElement.querySelector(".field-error");
+        errorEl.textContent = message;
+        errorEl.classList.remove("hidden");
+        input.style.borderColor = "var(--accent-warm)";
+      }
+      function clearError(input) {
+        const errorEl = input.parentElement.querySelector(".field-error");
+        errorEl.classList.add("hidden");
+        input.style.borderColor = "var(--border)";
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        successMsg.classList.add("hidden");
+
+        const name = form.name;
+        const email = form.email;
+        const message = form.message;
+        let valid = true;
+
+        if (!name.value.trim()) {
+          showError(name, "Please enter your name.");
+          valid = false;
+        } else clearError(name);
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+          showError(email, "Please enter a valid email address.");
+          valid = false;
+        } else clearError(email);
+
+        if (message.value.trim().length < 10) {
+          showError(message, "Message should be at least 10 characters.");
+          valid = false;
+        } else clearError(message);
+
+        if (valid) {
+          successMsg.classList.remove("hidden");
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>
