@@ -4,7 +4,7 @@ Nandan K — Developer Portfolio
 
 A personal developer portfolio designed around a blueprint/schematic visual theme — grid-paper backgrounds, registration-mark corner brackets, dimension-line dividers, and spec-sheet style cards. Built with semantic HTML5, Tailwind CSS, and vanilla JavaScript, with no framework and no build step.
 
-Live demo: add your deployed URL here
+
 
 Features
 🌓 Dark / light theme toggle — "blueprint navy" and "vellum drafting-paper" themes, persisted with localStorage
